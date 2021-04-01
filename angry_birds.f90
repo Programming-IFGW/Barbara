@@ -18,14 +18,14 @@
         READ*, v
 
         hmax=h0+((v*COSD(angle))**2)/(2*g)
-        PRINT*, hmax
       !  v0y=v*COSD(angle)
       !  vx=v*SIND(angle)
 
-        DO WHILE (x /= d) 
+        DO WHILE (x < d) 
                 DO pig_in=1, num_pig
-                        IF (dist(bird,pig(:,pig_in)) <= siz) THEN
-                                PRINT*, SQRT(DOT_PRODUCT(bird,pig(:,pig_in)))
+                        PRINT*, SQRT(DOT_PRODUCT(bird-pig(:,pig_in),bird-pig(:,pig_in)))
+                        PRINT*, bird
+                        IF (SQRT(DOT_PRODUCT(bird-pig(:,pig_in),bird-pig(:,pig_in))) <= siz) THEN
                         PRINT*, "GANHOU :)"
                         EXIT       
                         END IF
