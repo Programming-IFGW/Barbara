@@ -1,7 +1,7 @@
  PROGRAM ANGRY_BIRDS
          IMPLICIT NONE
-         REAL :: x=0.0, y=0.0, v=0.0, angle=0.0, t=0.0, hmax=0.0
-         REAL, PARAMETER :: h0=1, d=100, g=9.8, dt=0.1, siz=0.5
+         REAL(8) :: x=0.0, y=0.0, v=0.0, angle=0.0, t=0.0, hmax=0.0, d=0.0
+         REAL, PARAMETER :: h0=1, g=9.8, dt=1E-3, siz=0.5
          INTEGER, PARAMETER :: num_pig=2 
          INTEGER :: pig_in=1
          REAL, DIMENSION(2) :: bird=(/0.0,0.0/)
@@ -20,10 +20,10 @@
         hmax=h0+((v*COSD(angle))**2)/(2*g)
       !  v0y=v*COSD(angle)
       !  vx=v*SIND(angle)
-
-        DO WHILE (x < d) 
+        d=(2*v**3*SIND(2*angle)*COSD(angle))/(g**2)
+        DO WHILE (x .LE. d) 
                 DO pig_in=1, num_pig
-                        PRINT*, SQRT(DOT_PRODUCT(bird-pig(:,pig_in),bird-pig(:,pig_in)))
+                      !  PRINT*, SQRT(DOT_PRODUCT(bird-pig(:,pig_in),bird-pig(:,pig_in)))
                         PRINT*, bird
                         IF (SQRT(DOT_PRODUCT(bird-pig(:,pig_in),bird-pig(:,pig_in))) <= siz) THEN
                         PRINT*, "GANHOU :)"
