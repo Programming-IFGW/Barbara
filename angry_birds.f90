@@ -39,7 +39,7 @@
                 GOTO 1
         END IF
         
-        OPEN(UNIT=16,FILE="birds.dat",STATUS='REPLACE')
+        OPEN(UNIT=16,FILE="bird.dat",STATUS='REPLACE')
        
       !  hmax=h0+((v*COSD(angle))**2)/(2*g)
       !  v0y=v*COSD(angle)
