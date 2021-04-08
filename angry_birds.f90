@@ -11,8 +11,10 @@
         !!!!!!!!!! DISTANCIA MAXIMA DE ALCANCE !!!!!!!!!!!!
 
         d_max=(2*v**3*SIND(90.0)*COSD(45.0))/(g**2)
-        h_max=h0+((v*COSD(45.0))**2)/(2*g)
+   !     h_max=h0+((v*COSD(45.0))**2)/(2*g)
 
+
+        OPEN(UNIT=17,FILE='param.dat',STATUS='REPLACE')
        ! PRINT*, d_max
        ! PRINT*, h_max
         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! SORTEANDO OS PORQUINHOS !!!!!!!!!!!!
@@ -41,7 +43,8 @@
         
         OPEN(UNIT=16,FILE="bird.dat",STATUS='REPLACE')
        
-      !  hmax=h0+((v*COSD(angle))**2)/(2*g)
+        h_max=h0+((v*COSD(angle))**2)/(2*g)
+        WRITE(17,*) (/d_max,h_max/)
       !  v0y=v*COSD(angle)
       !  vx=v*SIND(angle)
         d=(2*v**3*SIND(2*angle)*COSD(angle))/(g**2)
